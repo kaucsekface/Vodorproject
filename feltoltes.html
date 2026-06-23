@@ -6,9 +6,9 @@
     <title>Vödör</title>
     <meta
       name="description"
-      content="VÖDÖR. Mobil szauna és fürdőkert, egy konténerben. A Vödörben sajnos még nincs víz. De ne aggódj, már feltöltés alatt áll, úgyhogy hamarosan tényleg bele tudsz majd csobbanni!"
+      content="VÖDÖR. Közösségi fürdőház egy konténerben."
     >
-    <link rel="preload" as="image" href="./vodor-logo.jpg">
+    <link rel="preload" as="image" href="./vodor-logo-transparent.png">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
@@ -19,45 +19,12 @@
     <main class="landing" aria-label="Vödör landing page">
       <section class="brand-scene" aria-label="A Vödör feltöltés alatt áll">
         <div class="illustration">
-          <svg class="tap" viewBox="0 0 240 140" role="img" aria-label="Minimalista vízcsap">
-            <path class="tap-line" d="M71 38h48c17 0 31 14 31 31v9" />
-            <path class="tap-line" d="M71 25v27" />
-            <path class="tap-line" d="M44 25h54" />
-            <path class="tap-line" d="M52 15h38" />
-            <path class="tap-line" d="M122 22v32" />
-            <path class="tap-line" d="M137 78h26" />
-            <path class="tap-line" d="M150 64v27" />
-            <path class="tap-line" d="M134 91h32" />
-            <path class="tap-line" d="M62 53c-7 9-7 18 0 27" />
-            <path class="tap-line" d="M76 53c7 9 7 18 0 27" />
-          </svg>
-
-          <svg class="water" viewBox="0 0 48 200" aria-hidden="true">
-            <path
-              class="stream"
-              d="M24 0 C18 28 31 48 24 76 C15 109 33 129 24 160 C20 174 22 188 24 200"
-            />
-            <circle class="drop drop-one" cx="18" cy="70" r="3" />
-            <circle class="drop drop-two" cx="31" cy="124" r="2.5" />
-          </svg>
-
           <div class="logo-wrap">
             <img
               class="logo"
-              src="./vodor-logo.jpg"
+              src="./vodor-logo-transparent.png"
               alt="Vödör logó, vödör illusztrációval"
             >
-          </div>
-
-          <div class="status-row">
-            <p class="status">
-              A Vödörben sajnos még nincs víz. De ne aggódj, már feltöltés alatt áll,
-              úgyhogy hamarosan tényleg bele tudsz majd csobbanni!
-            </p>
-            <a class="scroll-cue" href="#visuals" aria-label="Görgess lejjebb a látványtervekhez">
-              <span>görgess lejjebb</span>
-              <span class="scroll-arrow" aria-hidden="true"></span>
-            </a>
           </div>
         </div>
       </section>
@@ -65,9 +32,16 @@
       <section class="copy" aria-label="Vödör bemutatkozó szöveg">
         <p>
           <strong>VÖDÖR.</strong>
-          Mobil szauna és fürdőkert, egy konténerben.
+          Közösségi fürdőház egy konténerben.
         </p>
       </section>
+
+      <div class="scroll-cue-wrap">
+        <a class="scroll-cue" href="#visuals" aria-label="Görgess lejjebb a látványtervekhez">
+          <span>görgess lejjebb</span>
+          <span class="scroll-arrow" aria-hidden="true"></span>
+        </a>
+      </div>
     </main>
 
     <section class="visual-slideshow" id="visuals" aria-label="Vödör látványtervek">
@@ -79,9 +53,8 @@
 
     <section class="story" aria-label="Vödör vízió">
       <p>
-        Megálmodtunk egy fürdőt. Egy fiatalos, vibráns, és menő fürdőházat, ahol
-        aktívan kapcsolódhatsz ki reggel/délben/este, csak úgy, mint a kedvenc
-        budapesti romkocsmádban.
+        A Vödör egy közösségi fürdőház fatüzelésű szaunával, melegvizes dézsával,
+        hideg vizes merülővel, és még sok menő cuccal, egy konténerben.
       </p>
     </section>
 
@@ -90,7 +63,7 @@
     </section>
 
     <section class="contact-bar" aria-label="Kapcsolat">
-      <span>Nézd meg hol tart a projekt, és kövesd a Vödröt!</span>
+      <span>kövesd a vödröt</span>
       <a href="https://www.instagram.com/vodor.project" target="_blank" rel="noreferrer" aria-label="Vödör Instagram">
         <span class="instagram-icon" aria-hidden="true"></span>
         <span>Instagram</span>
@@ -98,7 +71,7 @@
     </section>
 
     <footer class="page-footer" aria-label="Vödör oldal vége">
-      <img src="./vodor-logo.jpg" alt="Vödör piros logó">
+      <img src="./vodor-logo-transparent.png" alt="Vödör piros logó">
     </footer>
   </body>
 </html>

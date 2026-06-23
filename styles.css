@@ -2,7 +2,6 @@
   --ink: #0d0d0d;
   --paper: #fbfbf8;
   --soft: #efeee9;
-  --water-line: rgba(56, 138, 193, 0.78);
 }
 
 * {
@@ -19,9 +18,7 @@ body {
   min-height: 100vh;
   margin: 0;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.9), transparent 28rem),
-    linear-gradient(135deg, #ffffff 0%, var(--paper) 58%, #f4f3ee 100%);
+  background: var(--paper);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -59,7 +56,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: multiply;
 }
 
 .landing {
@@ -86,53 +82,6 @@ body {
   margin-inline: auto;
 }
 
-.tap {
-  position: relative;
-  z-index: 3;
-  width: clamp(170px, 30vw, 250px);
-  height: auto;
-  margin-bottom: -1.2rem;
-}
-
-.tap-line {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.water {
-  position: absolute;
-  z-index: 2;
-  top: clamp(80px, 13vw, 112px);
-  left: 50%;
-  width: 42px;
-  height: clamp(128px, 20vw, 190px);
-  transform: translateX(40px);
-  overflow: visible;
-  pointer-events: none;
-}
-
-.stream {
-  fill: none;
-  stroke: var(--water-line);
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-dasharray: 36 18;
-  animation: pour 1.2s linear infinite;
-}
-
-.drop {
-  fill: var(--water-line);
-  opacity: 0.55;
-  animation: drip 1.6s ease-in-out infinite;
-}
-
-.drop-two {
-  animation-delay: 0.55s;
-}
-
 .logo-wrap {
   position: relative;
   display: block;
@@ -146,6 +95,10 @@ body {
 .logo-button {
   cursor: pointer;
   transition: transform 180ms ease, filter 180ms ease;
+}
+
+.intro .logo-button {
+  animation: logo-pump 1.45s ease-in-out infinite;
 }
 
 .logo-button:hover,
@@ -180,7 +133,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: multiply;
 }
 
 .status {
@@ -202,6 +154,13 @@ body {
   gap: clamp(0.85rem, 2.2vw, 1.4rem);
   width: min(100%, 640px);
   margin: clamp(1.1rem, 2.6vw, 1.6rem) auto 0;
+}
+
+.scroll-cue-wrap {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(-1rem, -1vw, -0.3rem);
 }
 
 .scroll-cue {
@@ -229,6 +188,7 @@ body {
 
 .copy {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
 }
 
@@ -250,6 +210,28 @@ body {
 .intro-copy p {
   max-width: 540px;
   font-size: clamp(2rem, 4.5vw, 4.9rem);
+}
+
+.intro-copy .intro-note {
+  max-width: 520px;
+  margin-top: clamp(1rem, 2vw, 1.4rem);
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.22;
+}
+
+.entry-callout {
+  position: relative;
+  z-index: 4;
+  width: min(100%, 18rem);
+  margin: clamp(1rem, 2.4vw, 1.4rem) auto 0;
+  padding: 0;
+  color: var(--ink);
+  font-size: clamp(0.82rem, 1.2vw, 0.98rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .visual-slideshow {
@@ -397,26 +379,6 @@ body {
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
-  mix-blend-mode: multiply;
-}
-
-@keyframes pour {
-  to {
-    stroke-dashoffset: -54;
-  }
-}
-
-@keyframes drip {
-  0%,
-  100% {
-    transform: translateY(-5px);
-    opacity: 0.15;
-  }
-
-  45% {
-    transform: translateY(14px);
-    opacity: 0.68;
-  }
 }
 
 @keyframes arrow-bounce {
@@ -427,6 +389,17 @@ body {
 
   50% {
     transform: translateY(5px) rotate(45deg);
+  }
+}
+
+@keyframes logo-pump {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.035);
   }
 }
 
@@ -493,6 +466,7 @@ body {
 
   .copy {
     justify-content: center;
+    align-items: center;
     text-align: center;
   }
 
@@ -505,18 +479,16 @@ body {
     width: min(100%, 390px);
   }
 
-  .water {
-    top: 78px;
-    height: 135px;
-    transform: translateX(58px);
-  }
-
   .status-row {
     flex-direction: column;
   }
 
   .status {
     max-width: 100%;
+  }
+
+  .intro-copy .intro-note {
+    max-width: min(100%, 28rem);
   }
 
   .visual-slideshow {
