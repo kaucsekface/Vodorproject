@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vödör</title>
+    <meta
+      name="description"
+      content="VÖDÖR. Közösségi fürdőház egy konténerben."
+    >
+    <link rel="preload" as="image" href="./vodor-logo-blue.jpg">
+    <link rel="stylesheet" href="./styles.css?v=20260624">
+    <style>
+      .language-toggle {
+        position: fixed;
+        top: clamp(0.85rem, 2vw, 1.3rem);
+        left: 50%;
+        z-index: 3000;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: #0d0d0d;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        transform: translateX(-50%);
+      }
+
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 3rem;
+        height: 1.5rem;
+      }
+
+      .toggle-switch input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+      }
+
+      .toggle-track {
+        position: absolute;
+        inset: 0;
+        border: 1px solid #0d0d0d;
+        border-radius: 999px;
+        background: #fbfbf8;
+        cursor: pointer;
+      }
+
+      .toggle-track::before {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: calc(1.5rem - 8px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: #0d0d0d;
+        content: "";
+        transition: transform 160ms ease;
+      }
+
+      .toggle-switch input:checked + .toggle-track::before {
+        transform: translateX(1.45rem);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="language-toggle" aria-label="Language selector">
+      <span>HU</span>
+      <label class="toggle-switch">
+        <input id="languageToggle" type="checkbox" aria-label="Switch between Hungarian and English">
+        <span class="toggle-track" aria-hidden="true"></span>
+      </label>
+      <span>EN</span>
+    </div>
+
+    <main class="landing intro" aria-label="Vödör nyitó oldal">
+      <section class="brand-scene" aria-label="Kattintható Vödör logó">
+        <div class="illustration">
+          <a id="entryLink" class="logo-wrap logo-button" href="./feltoltes.html" aria-label="Belépés a Vödör oldalára">
+            <img
+              class="logo"
+              src="./vodor-logo-blue.jpg"
+              alt="Vödör kék logó, kattintható vödör illusztrációval"
+            >
+          </a>
+          <p
+            class="entry-callout"
+            data-i18n
+            data-hu="Lépj be a Vödörbe!"
+            data-en="Step inside the bucket!"
+          >Lépj be a Vödörbe!</p>
+        </div>
+      </section>
+
+      <section class="copy intro-copy" aria-label="Belépési felhívás">
+        <p class="intro-title">
+          <strong>VÖDÖR.</strong>
+          <span
+            data-i18n
+            data-hu="Közösségi fürdőház egy konténerben."
+            data-en="Community bathhouse inside a shipping container."
+          >Közösségi fürdőház egy konténerben.</span>
+        </p>
+        <p
+          class="intro-note"
+          data-i18n
+          data-hu="A vödörben sajnos még nincs víz. De ne aggódj már feltöltés alatt áll. Úgyhogy készítsd a fürdőgatyád!"
+          data-en="Sadly there isn't any water in the bucket yet. But don't worry, we're working on filling it up soon, so prepare your swimsuits!"
+        >
+          A vödörben sajnos még nincs víz. De ne aggódj már feltöltés alatt áll.
+          Úgyhogy készítsd a fürdőgatyád!
+        </p>
+      </section>
+    </main>
+
+    <section class="contact-bar" aria-label="Kapcsolat">
+      <div class="contact-line">
+        <span
+          data-i18n
+          data-hu="nézd meg hogy áll a projekt, és kövesd a vödröt"
+          data-en="check the status of the project, and follow Vödör on insta"
+        >nézd meg hogy áll a projekt, és kövesd a vödröt</span>
+        <a href="https://www.instagram.com/vodor.project" target="_blank" rel="noreferrer" aria-label="Vödör Instagram">
+          <span class="instagram-icon" aria-hidden="true"></span>
+          <span>Instagram</span>
+        </a>
+      </div>
+      <a class="email-link" href="mailto:info@vodorproject.hu">info@vodorproject.hu</a>
+    </section>
+    <script>
+      const languageToggle = document.querySelector("#languageToggle");
+      const entryLink = document.querySelector("#entryLink");
+      const textTargets = document.querySelectorAll("[data-i18n]");
+
+      function setLanguage(language) {
+        document.documentElement.lang = language === "en" ? "en" : "hu";
+        entryLink.href = language === "en" ? "./feltoltes-en.html" : "./feltoltes.html";
+        textTargets.forEach((element) => {
+          const value = element.dataset[language] || "";
+          element.textContent = value;
+          element.hidden = value === "";
+        });
+      }
+
+      languageToggle.addEventListener("change", () => {
+        setLanguage(languageToggle.checked ? "en" : "hu");
+      });
+    </script>
+  </body>
+</html>
