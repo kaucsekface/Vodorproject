@@ -6,15 +6,17 @@
   <meta name="theme-color" content="#ffffff">
   <title>VÖDÖR. PHONE</title>
   <link rel="preload" href="./gulfs-display-normal.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./styles.css?v=20261117-vodor-phone">
+  <link rel="stylesheet" href="./styles.css?v=20261117-vodor-phone-contact">
 </head>
 <body class="phone-page">
   <h1>VÖDÖR. PHONE</h1>
   <main class="phone-art" aria-label="Interactive Vödör phone">
     <img src="./vodor-phone-art.png" alt="Illustration of the Vödör phone with social, location, music, gallery, booking and gift buttons">
+    <div class="phone-callout-mask" aria-hidden="true"></div>
+    <div class="phone-case-bottom" aria-hidden="true"></div>
     <div class="phone-screen" id="phoneScreen" aria-label="Vödör photo gallery"><img id="galleryPhoto" src="./gallery/photo-01.jpg" alt="Vödör sauna gallery photo"></div>
     <a class="phone-hit phone-mail-hit" id="emailButton" href="#emailDialog" aria-label="Show Vödör email address"></a>
-    <a class="phone-hit phone-call-hit" href="mailto:info@vodorproject.hu" aria-label="Contact Vödör"></a>
+    <button class="phone-hit phone-call-hit" id="phoneButton" type="button" aria-label="Show Vödör phone number"></button>
     <a class="phone-hit phone-logo-hit" href="https://vodorproject.hu" aria-label="Back to vodorproject.hu"></a>
     <a class="phone-hit phone-exit-hit" href="./blank.html" aria-label="Exit"></a>
     <a class="phone-link phone-social-1" href="https://instagram.com/vodor.project" target="_blank" rel="noopener noreferrer" aria-label="Vödör on Instagram"></a>
@@ -25,12 +27,13 @@
     <a class="phone-link phone-grid-3" href="https://maps.app.goo.gl/mu74ksGmQAbvaba28" target="_blank" rel="noopener noreferrer" aria-label="Vödör review on Google Maps"></a>
     <a class="phone-link phone-grid-4" href="https://open.spotify.com/playlist/1ZMPucKulnV0FybL6Jh0pu?si=9x_CsJiNS1qWGko_EL_u7g" target="_blank" rel="noopener noreferrer" aria-label="Vödör Spotify playlist"></a>
     <button class="phone-link phone-grid-5" id="galleryButton" type="button" aria-label="Play Vödör photo gallery"></button>
-    <a class="phone-link phone-grid-6" href="./blank.html" aria-label="Exit"></a>
+    <a class="phone-link phone-grid-6" href="https://www.youtube.com/@VÖDÖR-d9v" target="_blank" rel="noopener noreferrer" aria-label="Vödör on YouTube"></a>
     <a class="phone-link phone-book-1" href="https://bookasession.org/vodor/bundles" target="_blank" rel="noopener noreferrer" aria-label="Buy a Vödör bundle"></a>
     <a class="phone-link phone-book-2" href="https://bookasession.org/vodor" target="_blank" rel="noopener noreferrer" aria-label="Book a Vödör session"></a>
     <a class="phone-link phone-book-3" href="https://bookasession.org/vodor/gift-vouchers" target="_blank" rel="noopener noreferrer" aria-label="Buy a Vödör gift card"></a>
   </main>
   <dialog class="phone-email-dialog" id="emailDialog"><p>VÖDÖR. EMAIL</p><a href="mailto:info@vodorproject.hu">info@vodorproject.hu</a><form method="dialog"><button>Close</button></form></dialog>
+  <dialog class="phone-email-dialog" id="phoneDialog"><p>VÖDÖR. PHONE</p><a href="tel:+36205234523">+36205234523</a><form method="dialog"><button>Close</button></form></dialog>
   <script>
     const galleryPhotos = Array.from({ length: 20 }, (_, index) => `./gallery/photo-${String(index + 1).padStart(2, "0")}.jpg`);
     const galleryImage = document.querySelector("#galleryPhoto");
@@ -39,6 +42,9 @@
     document.querySelector("#emailButton").addEventListener("click", (event) => {
       event.preventDefault();
       document.querySelector("#emailDialog").showModal();
+    });
+    document.querySelector("#phoneButton").addEventListener("click", () => {
+      document.querySelector("#phoneDialog").showModal();
     });
     document.querySelector("#galleryButton").addEventListener("click", () => {
       if (galleryTimer) return;
